@@ -9,7 +9,6 @@ import (
 	"github.com/google/go-github/github"
 	"strings"
 	"errors"
-	"fmt"
 )
 
 func main() {
