@@ -30,14 +30,14 @@ func (c *Checker) Check(link string) (bool, int, []int) {
 
     resp, err := c.client.Do(req)
 
+    expectedCodes := []int{200}
+    expectedCodes = append(expectedCodes, c.expectedCodesList.getList(link)...)
+
     if err != nil {
-        panic(err)
+        return false, -1, expectedCodes
     }
 
     defer resp.Body.Close()
-
-    expectedCodes := []int{200}
-    expectedCodes = append(expectedCodes, c.expectedCodesList.getList(link)...)
 
     return resp.StatusCode == 200 || c.expectedCodesList.has(link, resp.StatusCode), resp.StatusCode, expectedCodes
 }
