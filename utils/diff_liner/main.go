@@ -33,10 +33,10 @@ func main() {
 		if strings.HasPrefix(line, "+++") {
 			diffLineNumber = -1
 
-			file = line[5:]
+			file = line[4:]
 
 			if strings.HasPrefix(file, "\"") {
-				file, err = strconv.Unquote(file)
+				file, err = strconv.Unquote(strings.Trim(file, "\t"))
 
 				if err != nil {
 					panic(err)
