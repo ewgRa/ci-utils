@@ -19,13 +19,17 @@ func (cs GithubComments) Has(comment *github.PullRequestComment) bool {
 }
 
 func ReadComments(file string) GithubComments {
+	var commentsList GithubComments
+
 	content, err := ioutil.ReadFile(file)
 
 	if err != nil {
 		panic(err)
 	}
 
-	var commentsList GithubComments
+	if len(content) == 0 {
+		return commentsList
+	}
 
 	err = json.Unmarshal(content, &commentsList)
 

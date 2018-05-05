@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/ewgRa/ci-utils/github/comments"
+	"github.com/ewgRa/ci-utils/src/github/comments"
 )
 
 // DiffLiner parse github diff content, taken by github api call (e.g. curl -H "Accept: application/vnd.github.v3.diff.json" https://api.github.com/repos/ru-de/faq/pulls/377)

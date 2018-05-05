@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"errors"
 	"encoding/json"
-	"github.com/ewgRa/ci-utils/diff_liner"
+	"github.com/ewgRa/ci-utils/src/diff_liner"
 )
 
 // DiffLiner parse github diff content, taken by github api call (e.g. curl -H "Accept: application/vnd.github.v3.diff.json" https://api.github.com/repos/ru-de/faq/pulls/377)

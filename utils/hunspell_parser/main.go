@@ -8,7 +8,7 @@ import (
     "strings"
     "encoding/json"
     "errors"
-    "github.com/ewgRa/ci-utils/hunspell_parser"
+    "github.com/ewgRa/ci-utils/src/hunspell_parser"
 )
 
 
