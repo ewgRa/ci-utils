@@ -33,7 +33,7 @@ func main() {
 
 	ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: os.Getenv("GITHUB_ACCESS_TOKEN")},
+		&oauth2.Token{AccessToken: os.Getenv("GITHUB_COMMENTS_SEND_TOKEN")},
 	)
 	tc := oauth2.NewClient(ctx, ts)
 
