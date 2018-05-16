@@ -21,7 +21,7 @@ func SendComments(accessToken, repo string, prNumber int, commentsList GithubCom
 
 	ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: os.Getenv("GITHUB_COMMENTS_SEND_TOKEN")},
+		&oauth2.Token{AccessToken: accessToken},
 	)
 	tc := oauth2.NewClient(ctx, ts)
 
