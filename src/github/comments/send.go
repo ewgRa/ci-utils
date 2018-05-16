@@ -3,7 +3,6 @@ package comments
 import (
 	"golang.org/x/oauth2"
 	"github.com/google/go-github/github"
-	"os"
 	"strings"
 	"errors"
 	"context"
