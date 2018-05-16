@@ -4,11 +4,6 @@ import (
 	"os"
 	"flag"
 	"github.com/ewgRa/ci-utils/src/github/comments"
-	"context"
-	"golang.org/x/oauth2"
-	"github.com/google/go-github/github"
-	"strings"
-	"errors"
 )
 
 func main() {
@@ -22,31 +17,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	repoPart := strings.Split(*repo, "/")
-
-	if len(repoPart) != 2 {
-		panic(errors.New("Can't parse repo"))
-	}
-
-	repoOwner := repoPart[0]
-	*repo = repoPart[1]
-
-	ctx := context.Background()
-	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: os.Getenv("GITHUB_COMMENTS_SEND_TOKEN")},
-	)
-	tc := oauth2.NewClient(ctx, ts)
-
-	client := github.NewClient(tc)
-
 	commentsList := comments.ReadComments(*file)
 
-	for _, comment := range commentsList {
+	err := comments.SendComments(os.Getenv("GITHUB_COMMENTS_SEND_TOKEN"), *repo, *pr, commentsList)
 
-		_, _, err := client.PullRequests.CreateComment(ctx, repoOwner, *repo, *pr, comment)
-
-		if err != nil {
-			panic(err)
-		}
+	if err != nil {
+		panic(err)
 	}
 }
