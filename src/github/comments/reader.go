@@ -18,6 +18,20 @@ func (cs GithubComments) Has(comment *github.PullRequestComment) bool {
 	return false
 }
 
+func (cs GithubComments) ToDraftReviewComments() []*github.DraftReviewComment {
+	var draftList []*github.DraftReviewComment
+
+	for _, cmt := range cs {
+		draftList = append(draftList, &github.DraftReviewComment{
+			Path: cmt.Path,
+			Position: cmt.Position,
+			Body: cmt.Body,
+		})
+	}
+
+	return draftList
+}
+
 func ReadComments(file string) GithubComments {
 	var commentsList GithubComments
 
