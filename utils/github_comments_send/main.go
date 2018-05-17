@@ -6,6 +6,7 @@ import (
 	"github.com/ewgRa/ci-utils/src/github/comments"
 )
 
+// Send comments to pull request under personal token
 func main() {
 	file := flag.String("file", "", "Comments, that you want to send to github")
 	repo := flag.String("repo", "", "Repository slug")

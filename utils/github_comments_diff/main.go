@@ -8,9 +8,7 @@ import (
 	"github.com/ewgRa/ci-utils/src/github/comments"
 )
 
-// DiffLiner parse github diff content, taken by github api call (e.g. curl -H "Accept: application/vnd.github.v3.diff.json" https://api.github.com/repos/ru-de/faq/pulls/377)
-// As output it respond with json data, that says which one position in diff belongs to changed line in file.
-// This position needed for call comment API endpoint - https://developer.github.com/v3/pulls/comments/#create-a-comment
+// Comments diff parse comments that you want to send and intersect it with exists comments to avoid double commenting
 func main() {
 	commentsFile := flag.String("comments", "", "Comments, that you want to send to github")
 	existsCommentsFile := flag.String("exists-comments", "", "Exists comments from github")

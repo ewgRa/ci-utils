@@ -8,6 +8,7 @@ import (
 	"github.com/google/go-github/github"
 )
 
+// Send review
 func main() {
 	body := flag.String("body", "", "The body text of the pull request review")
 	file := flag.String("file", "", "Comments, that you want to send to github")

@@ -21,6 +21,7 @@ type Result struct {
     word string
 }
 
+// Parse hunspell output and generate output for spell corrections in json format
 func main() {
     scanner := bufio.NewScanner(os.Stdin)
     types := parseHunspellOutput(scanner);

@@ -15,7 +15,6 @@ DIR=`dirname $0`
 
 apt-get -yqq update && apt-get install -y jq
 go get -u github.com/ewgRa/ci-utils/utils/diff_liner
-go get -u github.com/ewgRa/ci-utils/utils/hunspell_parser
 go get -u github.com/ewgRa/ci-utils/utils/github_comments_diff
 go get -u github.com/ewgRa/ci-utils/utils/github_comments_send
 
@@ -32,7 +31,7 @@ touch /tmp/comments.json
 while read FILE; do
     COMMIT=$(git log --pretty=format:"%H" -1 "$FILE");
 
-    // Generate /tmp/comments.json file here like in comments.example file
+    // Made checks and store result to >> /tmp/comments.json, content of this file will be similar to comments.example
 
     echo
 done < /tmp/changed_files
