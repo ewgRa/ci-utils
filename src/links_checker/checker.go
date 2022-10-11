@@ -34,7 +34,7 @@ func (c *Checker) Check(link string) (bool, int, []int) {
     expectedCodes = append(expectedCodes, c.expectedCodesList.getList(link)...)
 
     if err != nil {
-        return false, -1, expectedCodes
+        return c.expectedCodesList.has(link, -1),  -1, expectedCodes
     }
 
     defer resp.Body.Close()
